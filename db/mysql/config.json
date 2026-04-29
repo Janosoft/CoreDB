@@ -1,0 +1,11 @@
+{
+    "env": "development",
+    "db": {
+        "development": {
+            "host": "localhost",
+            "user": "root",
+            "password": "",
+            "database": "coredb"
+        }
+    }
+}
