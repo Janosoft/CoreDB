@@ -5,27 +5,54 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CoreDB - Iniciar Sesión</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <div id="loginForm">
-        <div class="row">
-            <div class="col">
-                <form class="form-floating">
-                    <input type="email" class="form-control" id="emailInput" placeholder="Email">
-                    <label for="emailInput">Email</label>
-                </form>
-                <form class="form-floating">
-                    <input type="password" class="form-control" id="passwordInput" placeholder="Contraseña">
-                    <label for="passwordInput">Contraseña</label>
-                </form>
-                <button type="button" class="btn btn-primary">Iniciar Sesión</button>
+<body class="d-flex justify-content-center align-items-center vh-100">
+
+    <div class="col-10 col-md-4">
+        <form id="loginForm">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="emailInput" placeholder="Email" required>
+                <label for="emailInput">Email</label>
             </div>
-        </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="passwordInput" placeholder="Contraseña" required>
+                <label for="passwordInput">Contraseña</label>
+            </div>
+
+            <button type="submit" name="backend" value="php" class="btn btn-primary w-100 mb-2">Iniciar Sesión (PHP backend)</button>
+        </form>
+        <script>
+            document.getElementById("loginForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const email = document.getElementById("emailInput").value;
+                const password = document.getElementById("passwordInput").value;
+                const backend = e.submitter.value; // Define el backend a utilizar
+
+                let result;
+
+                if (backend === "php") {
+                    result = await loginPHP(email, password);
+                }
+
+                /*
+                // Para usar cuando hayan más backends
+                else if (backend === "node") {
+                    result = await loginNode(email, password);
+                }
+                */
+
+                if (result.success) alert("Login exitoso: " + result.data.email + " - " + result.data.codigo);
+                else alert(result.error);
+            });
+        </script>
     </div>
-    <script src="/CoreDB/frontend/js/login.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script src="login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
