@@ -28,25 +28,45 @@
             document.getElementById("loginForm").addEventListener("submit", async (e) => {
                 e.preventDefault();
 
-                const email = document.getElementById("emailInput").value;
-                const password = document.getElementById("passwordInput").value;
-                const backend = e.submitter.value; // Define el backend a utilizar
+                // 1) Guardar el texto original y deshabilitar el botón
+                const button = e.submitter;
+                const originalText = button.textContent;
+                button.disabled = true;
+                button.textContent = "Espere...";
 
-                let result;
+                try {
+                    // 2) Obtener datos del formulario
+                    const email = document.getElementById("emailInput").value;
+                    const password = document.getElementById("passwordInput").value;
+                    const backend = e.submitter.value; // Define el backend a utilizar
 
-                if (backend === "php") {
-                    result = await loginPHP(email, password);
+                    // 3) Llamada al backend correspondiente
+                    let result;
+
+                    if (backend === "php") {
+                        result = await loginPHP(email, password);
+                    }
+
+                    /*
+                    // Para usar cuando hayan más backends
+                    else if (backend === "node") {
+                        result = await loginNode(email, password);
+                    }
+                    */
+                } catch (error) {
+
+                    console.error(error);
+                    alert("Error inesperado");
+
+                } finally {
+                    // 4) Restaurar el botón
+                    button.disabled = false;
+                    button.textContent = originalText;
+
+                    // 5) Mostrar el resultado
+                    if (result.success) alert("Login exitoso: " + result.data.email + " - " + result.data.codigo);
+                    else alert(result.error);
                 }
-
-                /*
-                // Para usar cuando hayan más backends
-                else if (backend === "node") {
-                    result = await loginNode(email, password);
-                }
-                */
-
-                if (result.success) alert("Login exitoso: " + result.data.email + " - " + result.data.codigo);
-                else alert(result.error);
             });
         </script>
     </div>
