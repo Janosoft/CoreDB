@@ -12,5 +12,7 @@ function getConnection(string $env = 'development'): PDO
         return $pdo;
     } catch (PDOException $e) {
         throw new Exception("CoreDB Error: " . $e->getMessage(), (int)$e->getCode());
+    } catch (Exception $e) {
+        throw new Exception("CoreDB Error: " . $e->getMessage(), (int)$e->getCode());
     }
 }
