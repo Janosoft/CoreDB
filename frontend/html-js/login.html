@@ -34,14 +34,14 @@
                 button.disabled = true;
                 button.textContent = "Espere...";
 
+                // 2) Obtener datos del formulario
+                let result;
                 try {
-                    // 2) Obtener datos del formulario
                     const email = document.getElementById("emailInput").value;
                     const password = document.getElementById("passwordInput").value;
                     const backend = e.submitter.value; // Define el backend a utilizar
 
                     // 3) Llamada al backend correspondiente
-                    let result;
 
                     if (backend === "php") {
                         result = await loginPHP(email, password);
@@ -64,8 +64,9 @@
                     button.textContent = originalText;
 
                     // 5) Mostrar el resultado
-                    if (result.success) alert("Login exitoso: " + result.data.email + " - " + result.data.codigo);
-                    else alert(result.error);
+                    if (result?.success) alert("Login exitoso: " + result.data.email + " - " + result.data.codigo);
+                    else if (result) alert(result.error);
+                    else alert("Error inesperado");
                 }
             });
         </script>
