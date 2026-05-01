@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var email_input = $Panel/email
 @onready var password_input = $Panel/password
+@onready var dialog = $Dialog
 
 var http
 
@@ -31,7 +32,8 @@ func _on_request_completed(result, response_code, headers, body):
 	print (response)
 	
 	if response and response["success"]:
-		print ("Login exitoso: %s - %s" % [response["data"]["email"], response["data"]["codigo"]]);
+		dialog.dialog_text = "Login exitoso: %s - %s" % [response["data"]["email"], response["data"]["codigo"]]
+		dialog.popup_centered()
 	else:
-		print ("Error en el login:", response)
-	
+		dialog.dialog_text = "Error en el login: %s" % [response["error"]]
+		dialog.popup_centered()

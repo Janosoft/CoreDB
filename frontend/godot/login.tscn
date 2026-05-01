@@ -34,4 +34,6 @@ offset_right = 512.0
 offset_bottom = 223.0
 text = "Iniciar Sesión (PHP backend)"
 
+[node name="Dialog" type="AcceptDialog" parent="." unique_id=37847125]
+
 [connection signal="pressed" from="Panel/loginPHP" to="." method="_on_login_php_pressed"]
