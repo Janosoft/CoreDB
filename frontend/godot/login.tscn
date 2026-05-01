@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c4dsbvkmagmwl"]
+
+[ext_resource type="Script" uid="uid://daewtr07gd7sw" path="res://login.gd" id="1_cau7c"]
+
+[node name="Node2D" type="Node2D" unique_id=246038587]
+script = ExtResource("1_cau7c")
+
+[node name="Panel" type="Panel" parent="." unique_id=1762799319]
+offset_right = 593.0
+offset_bottom = 270.0
+
+[node name="email" type="LineEdit" parent="Panel" unique_id=925026336]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 56.0
+offset_right = 448.0
+offset_bottom = 87.0
+placeholder_text = "Email"
+
+[node name="password" type="LineEdit" parent="Panel" unique_id=327201955]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 96.0
+offset_right = 448.0
+offset_bottom = 127.0
+placeholder_text = "Password"
+secret = true
+
+[node name="loginPHP" type="Button" parent="Panel" unique_id=914868828]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 192.0
+offset_right = 512.0
+offset_bottom = 223.0
+text = "Iniciar Sesión (PHP backend)"
+
+[connection signal="pressed" from="Panel/loginPHP" to="." method="_on_login_php_pressed"]
