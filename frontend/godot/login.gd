@@ -27,6 +27,15 @@ func _on_login_php_pressed() -> void:
 
 	http.request("http://localhost/CoreDB/backend/php/login.php", headers, HTTPClient.METHOD_POST, json_data)
 	
+func _on_login_laravel_pressed() -> void:
+	var email = email_input.text
+	var password = password_input.text
+	var data = {"email": email, "password": password}
+	var json_data = JSON.stringify(data)
+	var headers = ["Content-Type: application/json"]
+
+	http.request("http://localhost:8000/api/login", headers, HTTPClient.METHOD_POST, json_data)
+	
 func _on_request_completed(result, response_code, headers, body):
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	print (response)

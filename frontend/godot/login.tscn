@@ -34,6 +34,15 @@ offset_right = 512.0
 offset_bottom = 223.0
 text = "Iniciar Sesión (PHP backend)"
 
+[node name="loginLaravel" type="Button" parent="Panel" unique_id=1651856178]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 227.0
+offset_right = 512.0
+offset_bottom = 258.0
+text = "Iniciar Sesión (Laravel backend)"
+
 [node name="Dialog" type="AcceptDialog" parent="." unique_id=37847125]
 
 [connection signal="pressed" from="Panel/loginPHP" to="." method="_on_login_php_pressed"]
+[connection signal="pressed" from="Panel/loginLaravel" to="." method="_on_login_laravel_pressed"]

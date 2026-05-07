@@ -21,14 +21,10 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
         // 3) Llamada al backend correspondiente
         if (backend === "php") {
             result = await loginPHP(email, password);
+        } else if (backend === "laravel") {
+            result = await loginLaravel(email, password);
         }
 
-        /*
-        // Para usar cuando hayan más backends
-        else if (backend === "node") {
-            result = await loginNode(email, password);
-        }
-        */
     } catch (error) {
         console.error(error);
         alert("Error inesperado");
@@ -64,6 +60,26 @@ async function loginPHP(email, password) {
 
     } catch (error) {
         console.error("Error en loginPHP:", error);
+        return { success: false, message: "Error de conexión" };
+    }
+}
+
+// ---------------------------------------------------
+// Login usando el backend Laravel
+// ---------------------------------------------------
+
+async function loginLaravel(email, password) {
+    try {
+        const response = await fetch("http://localhost:8000/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
+
+        return await response.json();
+
+    } catch (error) {
+        console.error("Error en loginLaravel:", error);
         return { success: false, message: "Error de conexión" };
     }
 }

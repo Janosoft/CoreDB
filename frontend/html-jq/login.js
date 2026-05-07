@@ -1,8 +1,16 @@
 $("#loginForm").submit(function (e) {
     e.preventDefault();
+    const backend = e.originalEvent.submitter.value;
+    let url = "";
+
+    if (backend === "php") {
+        url = "/CoreDB/backend/php/login.php";
+    } else if (backend === "laravel") {
+        url = "http://localhost:8000/api/login";
+    }
 
     $.ajax({
-        url: "/CoreDB/backend/php/login.php",
+        url: url,
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify({
