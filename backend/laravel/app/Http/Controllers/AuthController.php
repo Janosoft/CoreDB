@@ -31,7 +31,7 @@ class AuthController extends Controller
             }
 
             // Inicio de sesión exitoso
-            return response()->json(['success' => true, 'error' => "", 'data' => ['email' => $user->email, 'codigo' => $user->codigo ?? null]]);
+            return response()->json(['success' => true, 'error' => "", 'data' => ['codigo' => $user->codigo, 'email' => $user->email]]);
         } catch (\Exception $e) {
             // Error interno del servidor
             return response()->json(['success' => false, 'error' => 'Error interno del servidor.', 'data' => []], 500);
