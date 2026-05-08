@@ -19,12 +19,20 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
         const backend = e.submitter.value; // Define el backend a utilizar
 
         // 3) Llamada al backend correspondiente
-        if (backend === "php") {
-            result = await loginPHP(email, password);
-        } else if (backend === "laravel") {
-            result = await loginLaravel(email, password);
+        switch (backend) {
+            case "php":
+                result = await loginPHP(email, password);
+                break;
+            case "laravel":
+                result = await loginLaravel(email, password);
+                break;
+            case "go":
+                result = await loginGo(email, password);
+                break;
+            default:
+                alert("Backend inválido");
+                return;
         }
-
     } catch (error) {
         console.error(error);
         alert("Error inesperado");
@@ -60,7 +68,7 @@ async function loginPHP(email, password) {
 
     } catch (error) {
         console.error("Error en loginPHP:", error);
-        return { success: false, message: "Error de conexión" };
+        return { success: false, error: "Error de conexión" };
     }
 }
 
@@ -80,6 +88,26 @@ async function loginLaravel(email, password) {
 
     } catch (error) {
         console.error("Error en loginLaravel:", error);
-        return { success: false, message: "Error de conexión" };
+        return { success: false, error: "Error de conexión" };
+    }
+}
+
+// ---------------------------------------------------
+// Login usando el backend Go
+// ---------------------------------------------------
+
+async function loginGo(email, password) {
+    try {
+        const response = await fetch("http://localhost:8080/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
+
+        return await response.json();
+
+    } catch (error) {
+        console.error("Error en loginGo:", error);
+        return { success: false, error: "Error de conexión" };
     }
 }

@@ -3,10 +3,19 @@ $("#loginForm").submit(function (e) {
     const backend = e.originalEvent.submitter.value;
     let url = "";
 
-    if (backend === "php") {
-        url = "/CoreDB/backend/php/login.php";
-    } else if (backend === "laravel") {
-        url = "http://localhost:8000/api/login";
+    switch (backend) {
+        case "php":
+            url = "/CoreDB/backend/php/login.php";
+            break;
+        case "laravel":
+            url = "http://localhost:8000/api/login";
+            break;
+        case "go":
+            url = "http://localhost:8080/login";
+            break;
+        default:
+            alert("Backend inválido");
+            return;
     }
 
     $.ajax({
