@@ -6,9 +6,9 @@ type LoginRequest struct {
 }
 
 type LoginResponse struct {
-	Success bool        `json:"success"`
-	Error   string      `json:"error"`
-	Data    interface{} `json:"data"`
+	Success bool   `json:"success"`
+	Error   string `json:"error"`
+	Data    any    `json:"data"`
 }
 
 type UserData struct {
