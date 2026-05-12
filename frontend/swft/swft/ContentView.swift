@@ -81,6 +81,13 @@ struct ContentView: View {
                 .buttonStyle(.borderedProminent)
                 .tint(.cyan)
                 .disabled(isLoading)
+                
+                Button(action: { login(backend: "python") }) {
+                    labelForButton("Python backend")
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.cyan)
+                .disabled(isLoading)
             }
 
             if !message.isEmpty {
@@ -120,6 +127,8 @@ struct ContentView: View {
             urlString = "http://localhost:8000/api/login"
         case "go":
             urlString = "http://localhost:8080/login"
+        case "python":
+            urlString = "http://localhost:8000/login"
         default:
             return
         }

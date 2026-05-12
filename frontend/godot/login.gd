@@ -45,6 +45,15 @@ func _on_login_go_pressed() -> void:
 
 	http.request("http://localhost:8080/login", headers, HTTPClient.METHOD_POST, json_data)
 	
+func _on_login_python_pressed() -> void:
+	var email = email_input.text
+	var password = password_input.text
+	var data = {"email": email, "password": password}
+	var json_data = JSON.stringify(data)
+	var headers = ["Content-Type: application/json"]
+
+	http.request("http://localhost:8000/login", headers, HTTPClient.METHOD_POST, json_data)
+	
 func _on_request_completed(result, response_code, headers, body):
 	var response = JSON.parse_string(body.get_string_from_utf8())
 	print (response)

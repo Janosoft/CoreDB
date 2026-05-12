@@ -29,6 +29,9 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
             case "go":
                 result = await loginGo(email, password);
                 break;
+            case "python":
+                result = await loginPython(email, password);
+                break;
             default:
                 alert("Backend inválido");
                 return;
@@ -108,6 +111,26 @@ async function loginGo(email, password) {
 
     } catch (error) {
         console.error("Error en loginGo:", error);
+        return { success: false, error: "Error de conexión" };
+    }
+}
+
+// ---------------------------------------------------
+// Login usando el backend Python
+// ---------------------------------------------------
+
+async function loginPython(email, password) {
+    try {
+        const response = await fetch("http://localhost:8000/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
+
+        return await response.json();
+
+    } catch (error) {
+        console.error("Error en loginPython:", error);
         return { success: false, error: "Error de conexión" };
     }
 }

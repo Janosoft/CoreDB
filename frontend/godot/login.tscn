@@ -29,28 +29,37 @@ secret = true
 [node name="loginPHP" type="Button" parent="Panel" unique_id=914868828]
 layout_mode = 0
 offset_left = 280.0
-offset_top = 192.0
+offset_top = 160.0
 offset_right = 536.0
-offset_bottom = 223.0
+offset_bottom = 191.0
 text = "Iniciar Sesión (PHP backend)"
 alignment = 0
 
 [node name="loginLaravel" type="Button" parent="Panel" unique_id=1651856178]
 layout_mode = 0
 offset_left = 280.0
-offset_top = 224.0
+offset_top = 192.0
 offset_right = 536.0
-offset_bottom = 255.0
+offset_bottom = 223.0
 text = "Iniciar Sesión (Laravel backend)"
 alignment = 0
 
 [node name="loginGo" type="Button" parent="Panel" unique_id=486878079]
 layout_mode = 0
 offset_left = 280.0
+offset_top = 224.0
+offset_right = 536.0
+offset_bottom = 255.0
+text = "Iniciar Sesión (Go backend)"
+alignment = 0
+
+[node name="loginPython" type="Button" parent="Panel" unique_id=811709155]
+layout_mode = 0
+offset_left = 280.0
 offset_top = 256.0
 offset_right = 536.0
 offset_bottom = 287.0
-text = "Iniciar Sesión (Go backend)"
+text = "Iniciar Sesión (Python backend)"
 alignment = 0
 
 [node name="Dialog" type="AcceptDialog" parent="." unique_id=37847125]
@@ -58,3 +67,4 @@ alignment = 0
 [connection signal="pressed" from="Panel/loginPHP" to="." method="_on_login_php_pressed"]
 [connection signal="pressed" from="Panel/loginLaravel" to="." method="_on_login_laravel_pressed"]
 [connection signal="pressed" from="Panel/loginGo" to="." method="_on_login_go_pressed"]
+[connection signal="pressed" from="Panel/loginPython" to="." method="_on_login_python_pressed"]

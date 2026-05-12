@@ -13,6 +13,9 @@ $("#loginForm").submit(function (e) {
         case "go":
             url = "http://localhost:8080/login";
             break;
+        case "python":
+            url = "http://localhost:8000/login";
+            break;
         default:
             alert("Backend inválido");
             return;
