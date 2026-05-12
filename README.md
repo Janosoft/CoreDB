@@ -1,29 +1,55 @@
 # CoreDB
 
-Laboratorio full-stack para experimentar y comparar múltiples tecnologías utilizando una base de datos MySQL como núcleo.
+Proyecto/laboratorio full-stack para experimentar, aprender y comparar distintas tecnologías utilizando una base de datos MySQL como núcleo compartido.  
+Porque claramente hacer un solo backend no era suficiente sufrimiento.
 
-## Laravel
+---
 
-Para iniciar el servidor de desarrollo de Laravel, ejecuta el siguiente comando:
+## Tecnologías
 
-```bash
-php artisan serve --host=0.0.0.0 --port=8000
-```
+Actualmente el proyecto incluye implementaciones en:
 
-## Go
+- PHP
+- Laravel
+- Go
+- Python (FastAPI)
+- Frontends experimentales en:
+  - HTML + JS
+  - HTML + JQuery
+  - Godot 4.6
+  - Swift (macOS)
 
-Para iniciar el servidor de desarrollo de Go, entra en el directorio backend/go y ejecuta el siguiente comando:
+---
 
-```bash
-go run .
-```
+## Requisitos
 
-## Python
+- MySQL
+- XAMPP (para PHP)
+- Go
+- Python 3
+- Composer
+- Laravel
+- Virtualenv (Python)
 
-Para iniciar el servidor de desarrollo de Python, entra en el directorio backend/python y ejecuta el siguiente comando:
+---
 
-```bash
-cd backend/python
-source venv/bin/activate
-uvicorn main:app --reload
+## Estructura del proyecto
+
+```text
+CoreDB/
+│
+├── backend/
+│   ├── go/
+│   ├── laravel/
+│   ├── php/
+│   └── python/
+│
+├── frontend/
+│   ├── godot/
+│   ├── html-js/
+│   ├── html-jq/
+│   └── swift/
+│
+└── db/
+    └── mysql/
 ```
