@@ -17,3 +17,13 @@ Para iniciar el servidor de desarrollo de Go, entra en el directorio backend/go 
 ```bash
 go run .
 ```
+
+## Python
+
+Para iniciar el servidor de desarrollo de Python, entra en el directorio backend/python y ejecuta el siguiente comando:
+
+```bash
+cd backend/python
+source venv/bin/activate
+uvicorn main:app --reload
+```
